@@ -6,7 +6,7 @@ class Program
     {
         Console.Write("What is your grade percentage?: ");
         int grade = int.Parse(Console.ReadLine());
-        int reminder = reminder = grade % 10;
+        int reminder = grade % 10;
         string letter;
 
         // Calculation to the letter grade and correspondant sign
