@@ -1,6 +1,4 @@
-using System;
-using System.IO;
-using System.Runtime.InteropServices;
+
 public class FileManager
 {
     // This is the class that allow me to have the code to save, append, load,
@@ -35,7 +33,7 @@ public class FileManager
 
     public void ReadFile(string fileName, List<string> list)
     {
-        string[] lines = System.IO.File.ReadAllLines(fileName);
+        string[] lines = File.ReadAllLines(fileName);
         
         // Helps with duplicates
         list.Clear(); 

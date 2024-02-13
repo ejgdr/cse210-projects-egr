@@ -52,6 +52,10 @@ public class Journal
                 _fileManager.ReadFile(fileName, _entries);
             }
         }
+        else
+        {
+            _fileManager.ReadFile(fileName, _entries);
+        }
         
     }
 
@@ -70,7 +74,7 @@ public class Journal
             if (option.ToLower() == "y")
             {
                 fileName = fileN;
-                _fileManager.CreateFile(fileName, _entries);
+                _fileManager.AddToFile(fileName, _entries);
                 _entries.Clear();
             }
             else if (option.ToLower() == "n")
