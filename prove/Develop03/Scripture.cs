@@ -1,16 +1,13 @@
 public class Scripture
 {
-    private Reference _reference;
-    private List<Store> _scriptureContent;
-    private Word _word;
-    Scripture(Reference reference)
-    {
-        _reference = reference;
-    }
+    private Store _scriptureContent = new Store();
 
     public void HideWords(){}
 
-    public void GetRenderedText(){}
+    public string GetRenderedText(Reference reference)
+    {
+        return _scriptureContent.GenerateScripture(reference.AssambleReference());
+    }
 
     private void IsCompletelyHidden(){}
 }

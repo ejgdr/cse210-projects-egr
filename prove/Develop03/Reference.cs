@@ -12,5 +12,15 @@ public class Reference
         _startVerse = startVerse;
         _endVerse = endVerse;
     }
-    public void AssambleReference(){}
+    public string AssambleReference()
+    {
+        if (_endVerse == 0)
+        {
+            return $"{_book} {_chapter}:{_startVerse}";
+        }
+        else
+        {
+            return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
+        }
+    }
 }
