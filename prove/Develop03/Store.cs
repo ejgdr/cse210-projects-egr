@@ -11,25 +11,18 @@ public class Store
 
     public string GenerateScripture(string reference)
     {
-        // An attempt to pass the second verse, thought not completed
-        if (reference.Contains("-"))
-        {
-            string workingRef = reference.Substring(reference.IndexOf(":"));
-            string verses = string.Empty;
-
-            for (int i = 0; i < workingRef.Length; i++)
-            {
-            if (Char.IsDigit(workingRef[i]))
-               verses += workingRef[i];
-            }
-
-            string root = reference.Substring(0, reference.IndexOf(":"));
-
-            return $"{reference} {_scriptures[reference]}\n{_scriptures[reference]}";
-        }
-        
         // Passing one verse
         return $"{reference} {_scriptures[reference]}";
+    }
+
+    public string GenerateBlock(List<string> references, string reference)
+    {
+        string display = $"{reference}";
+        foreach (string refer in references)
+        {
+            display += $"{_scriptures[refer]}\n";
+        }
+        return display;
     }
 
 }

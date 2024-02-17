@@ -32,17 +32,13 @@ class Program
                 {
                     _scripture._blockOfScripture = _scripture.HideWords();                
                     gameOn = true;
-                }
-                
+                }    
             }
             else if (userChoice.ToLower() == "quit")
             {
                 gameOn = false;
             }
-
             Console.Clear(); 
-        }
-
-        
+        } 
     }
 }

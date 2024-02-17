@@ -1,5 +1,3 @@
-using System.Reflection.Metadata.Ecma335;
-using Microsoft.VisualBasic;
 
 public class Scripture
 {
