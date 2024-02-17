@@ -25,8 +25,12 @@ public class Scripture
     public string HideWords()
     {
         string[] listWordsScripture = _blockOfScripture.Split(' ');
-        int index = random.Next(0, listWordsScripture.Length);
-        listWordsScripture[index] = _operateWord.GetRenderedText(listWordsScripture[index]);
+        int index1 = random.Next(0, listWordsScripture.Length);
+        int index2 = random.Next(0, listWordsScripture.Length);
+        int index3 = random.Next(0, listWordsScripture.Length);
+        listWordsScripture[index1] = _operateWord.GetRenderedText(listWordsScripture[index1]);
+        listWordsScripture[index2] = _operateWord.GetRenderedText(listWordsScripture[index2]);
+        listWordsScripture[index3] = _operateWord.GetRenderedText(listWordsScripture[index3]);
         return string.Join(" ", listWordsScripture);
     }
 
