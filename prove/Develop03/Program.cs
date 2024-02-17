@@ -11,19 +11,36 @@ class Program
         // Variables to run program
         string userChoice;
         bool gameOn = true;
+
+        _scripture._blockOfScripture = _scripture.GetRenderedText(_reference);
+
         while (gameOn)
         {
             // Bring the block of scriptures to the screen
-            Console.WriteLine(_scripture.GetRenderedText(_reference));
+            Console.WriteLine(_scripture._blockOfScripture);
             Console.WriteLine("\nPress enter to continue or type 'quit' to finish:");
             userChoice = Console.ReadLine();
-            Console.Clear();
-
+            
             // To stop the program
-            if (userChoice.ToLower() == "quit")
+            if (userChoice.ToLower() == "")
+            {
+                if (_scripture.IsCompletelyHidden())
+                {
+                    gameOn = false;
+                }
+                else
+                {
+                    _scripture._blockOfScripture = _scripture.HideWords();                
+                    gameOn = true;
+                }
+                
+            }
+            else if (userChoice.ToLower() == "quit")
             {
                 gameOn = false;
-            } 
+            }
+
+            Console.Clear(); 
         }
 
         

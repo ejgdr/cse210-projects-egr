@@ -1,3 +1,6 @@
+using System.Reflection.Metadata.Ecma335;
+using Microsoft.VisualBasic;
+
 public class Scripture
 {
     /**
@@ -5,17 +8,45 @@ public class Scripture
        what happens when is completely hidden, and what is being rendered to
        the screen 
     **/
+    
     private Store _scriptureContent = new Store();
-    // Select three words at a time to hide
-    public void HideWords()
-    {
-         
-    }
+    private Word _operateWord = new Word();
+    public string _blockOfScripture;
+    Random random = new Random();
+    
     // What the user sees on the screen
     public string GetRenderedText(Reference reference)
     {
-        return _scriptureContent.GenerateScripture(reference.AssambleReference());
+        _blockOfScripture = _scriptureContent.GenerateScripture(reference.AssambleReference());
+        return _blockOfScripture;
     }
+
+    // Select three words at a time to hide
+    public string HideWords()
+    {
+        string[] listWordsScripture = _blockOfScripture.Split(' ');
+        int index = random.Next(0, listWordsScripture.Length);
+        listWordsScripture[index] = _operateWord.GetRenderedText(listWordsScripture[index]);
+        return string.Join(" ", listWordsScripture);
+    }
+
     // Check if the whole block has been hidden
-    private void IsCompletelyHidden(){}
+    public bool IsCompletelyHidden()
+    {
+        string[] listWordsScripture = _blockOfScripture.Split(' ');
+        int lengthOfList = listWordsScripture.Length;
+        int count = 0;
+        foreach (string word in listWordsScripture)
+        {
+            if (word.StartsWith('_'))
+            {
+                count += 1;
+            }
+            if (lengthOfList == count)
+            {
+                return true;
+            }
+        }     
+    return false;
+    }
 }

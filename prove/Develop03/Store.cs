@@ -27,6 +27,7 @@ public class Store
 
             return $"{reference} {_scriptures[reference]}\n{_scriptures[reference]}";
         }
+        
         // Passing one verse
         return $"{reference} {_scriptures[reference]}";
     }

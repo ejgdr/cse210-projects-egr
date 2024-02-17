@@ -16,6 +16,7 @@ public class Reference
         _startVerse = startVerse;
         _endVerse = endVerse;
     }
+    
     // Give the format to the reference with its components
     public string AssambleReference()
     {
