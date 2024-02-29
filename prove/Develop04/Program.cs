@@ -1,7 +1,3 @@
-using System;
-using System.ComponentModel.Design;
-using System.Runtime.CompilerServices;
-
 class Program
 {
     static public int _selection = 0;
