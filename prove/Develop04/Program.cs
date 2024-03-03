@@ -35,6 +35,9 @@ class Program
                 reflecting.DisplayGreeting();
                 reflecting.AskDuration();
                 reflecting.RunIt();
+                reflecting.DisplayPrompt();
+                reflecting.CallToPonder();
+                reflecting.DisplayQuestion();
                 reflecting.DisplayEndMessage();
             }
             else if (_selection == 3)

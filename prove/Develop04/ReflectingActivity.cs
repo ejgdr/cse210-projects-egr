@@ -19,10 +19,40 @@ public class ReflectingActivity: Activity
         "What did you learn about yourself through this experience?",
         "How can you keep this experience in mind in the future?"
     };
+    private Random _random = new Random();
     
     public ReflectingActivity(string actName, string descrip) : base(actName, descrip){}
-    private void RandomPrompt(){}
-    private void RandomQuestion(){}
-    public void DisplayPrompt(){}
-    public void DisplayQuestion(){}
+
+    public void DisplayPrompt()
+    {
+        int index = _random.Next(_prompts.Count());
+        string prompt = _prompts[index];
+        Console.WriteLine("Consider the following prompt:\n");
+        Console.WriteLine($" --- {prompt} --- \n");
+        Console.WriteLine("When you have something in mind, press enter to continue.");
+        Console.Read();
+    }
+
+    public void CallToPonder()
+    {
+        Console.WriteLine("Now ponder in each of the following questions as they related to this experience.");
+        Console.Write("You may begin in: ");
+        ShowCountdown();
+        Console.WriteLine();
+    }
+    public void DisplayQuestion()
+    {
+        int index = _random.Next(_questions.Count());
+        string question = _questions[index];
+        Console.Clear();
+        
+        for (int i = _duration; i > 0; i++)
+        {
+            Console.Write($"> {question}");
+            ShowSpinner();
+            Console.WriteLine();
+            i -= 10;
+        }
+        Console.WriteLine();
+    }
 }
