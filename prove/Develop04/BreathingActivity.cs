@@ -1,10 +1,8 @@
 public class BreathingActivity : Activity
 {
-    protected int _splitDuration;
 
     public BreathingActivity(string actName, string descrip) : base(actName, descrip)
     {
-        _splitDuration = _duration;
     }
     public void DisplayBreathing()
     {
