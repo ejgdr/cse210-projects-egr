@@ -48,6 +48,9 @@ class Program
                 listing.DisplayGreeting();
                 listing.AskDuration();
                 listing.RunIt();
+                listing.DisplayPrompt();
+                listing.CollectAnswers();
+                listing.DisplayCount();
                 listing.DisplayEndMessage();
             }
             else if (_selection == 4)
