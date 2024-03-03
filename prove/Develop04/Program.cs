@@ -23,6 +23,7 @@ class Program
                 breathing.DisplayGreeting();
                 breathing.AskDuration();
                 breathing.RunIt();
+                breathing.DisplayBreathing();
                 breathing.DisplayEndMessage();
 
             }

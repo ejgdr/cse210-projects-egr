@@ -2,16 +2,13 @@ public class Activity
 {
     private string _activityName;
     private string _description;
-    private int _duration;
-    private string _ending;
+    protected int _duration;
     private List<string> spinnerAnimation = new List<string>() {"|", "/", "-", "\\", "|", "/", "-", "\\"};
-
 
     public Activity(string actName, string descrip)
     {
         _activityName = actName;
         _description = descrip;
-        _duration = 1;
     }
     public void DisplayGreeting()
     {
@@ -39,14 +36,18 @@ public class Activity
         foreach (string s in spinnerAnimation)
         {
             Console.Write(s);
-            Thread.Sleep(800);
+            Thread.Sleep(500);
             Console.Write("\b \b");
         }
-
     }
     public void ShowCountdown()
     {
-
+        for (int i = 5; i > 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(800);
+            Console.Write("\b \b");
+        }
     }
     
 }
