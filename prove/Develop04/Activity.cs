@@ -24,7 +24,7 @@ public class Activity
         Console.WriteLine("Well done!!");
         ShowSpinner();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName}.");
-        Thread.Sleep(3000);
+        ShowSpinner();
     }
     public void RunIt()
     {
