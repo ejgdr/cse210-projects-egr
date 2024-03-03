@@ -42,12 +42,13 @@ public class ReflectingActivity: Activity
     }
     public void DisplayQuestion()
     {
-        int index = _random.Next(_questions.Count());
-        string question = _questions[index];
+        
         Console.Clear();
         
         for (int i = _duration; i > 0; i++)
         {
+            int index = _random.Next(_questions.Count());
+            string question = _questions[index];
             Console.Write($"> {question}");
             ShowSpinner();
             Console.WriteLine();
