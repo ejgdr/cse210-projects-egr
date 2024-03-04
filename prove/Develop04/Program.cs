@@ -1,21 +1,21 @@
 class Program
 {
-    static public int _selection = 0;
+    static public string _selection = "0";
     static void Main(string[] args)
     {
         Menu();
     }
     static public void Menu()
     {     
-        while (_selection != 4)
+        while (_selection != "4")
         {
             Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Start breathing activity\n  2. Start reflecting activity\n  3. Start listing activity\n  4. Quit");
             Console.Write("Select a choice from the menu: ");
-            _selection = int.Parse(Console.ReadLine());
+            _selection = Console.ReadLine();
             Console.Clear();
-            if (_selection == 1)
+            if (_selection == "1")
             {
                 BreathingActivity breathing = new BreathingActivity(
                     "Breathing Activity",
@@ -27,7 +27,7 @@ class Program
                 breathing.DisplayEndMessage();
 
             }
-            else if (_selection == 2)
+            else if (_selection == "2")
             {
                 ReflectingActivity reflecting = new ReflectingActivity(
                     "Reflection Activity",
@@ -40,7 +40,7 @@ class Program
                 reflecting.DisplayQuestion();
                 reflecting.DisplayEndMessage();
             }
-            else if (_selection == 3)
+            else if (_selection == "3")
             {
                 ListingActivity listing = new ListingActivity(
                     "Listing Activity",
@@ -53,7 +53,7 @@ class Program
                 listing.DisplayCount();
                 listing.DisplayEndMessage();
             }
-            else if (_selection == 4)
+            else if (_selection == "4")
             {
                 Console.WriteLine("See you later!");
             }
