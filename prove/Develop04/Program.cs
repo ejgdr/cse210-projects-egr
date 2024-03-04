@@ -3,10 +3,12 @@ class Program
     static public string _selection = "0";
     static void Main(string[] args)
     {
+        // Starting on the program, only feature added here, an else statement to avoid wrong inputs
         Menu();
     }
     static public void Menu()
-    {     
+    {   
+        // Menu controller  
         while (_selection != "4")
         {
             Console.Clear();

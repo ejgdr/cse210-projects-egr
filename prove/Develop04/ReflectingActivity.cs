@@ -1,5 +1,8 @@
 public class ReflectingActivity: Activity
 {
+    // Child activity, inheriting from Activity on charge of an exercise of reflection
+
+    // Attributes
     private string[] _prompts =
     {
         "Think of a time when you stood up for someone else.",
@@ -21,10 +24,13 @@ public class ReflectingActivity: Activity
     };
     private Random _random = new Random();
     
+    // Constructor
     public ReflectingActivity(string actName, string descrip) : base(actName, descrip){}
 
+    // Behaviors
     public void DisplayPrompt()
     {
+        // Shows the user the prompt on which they need to reflect upon
         int index = _random.Next(_prompts.Count());
         string prompt = _prompts[index];
         Console.WriteLine("Consider the following prompt:\n");
@@ -35,6 +41,7 @@ public class ReflectingActivity: Activity
 
     public void CallToPonder()
     {
+        // Intro to the questions that help them reflect upon the topic
         Console.WriteLine("Now ponder in each of the following questions as they related to this experience.");
         Console.Write("You may begin in: ");
         ShowCountdown();
@@ -42,7 +49,7 @@ public class ReflectingActivity: Activity
     }
     public void DisplayQuestion()
     {
-        
+        // Display of actual questions
         Console.Clear();
         
         for (int i = _duration; i > 0; i++)
