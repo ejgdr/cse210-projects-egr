@@ -6,8 +6,38 @@ public abstract class Goal
     protected string _description;
     protected int _points;
     protected bool _done;
-    public Goal(){}
+    public Goal()
+    {
+        Console.Write("Which type of goal wouold you like to create? ");
+        _type = TransformType(Console.ReadLine());
+        Console.Write("What is the name of your goal? ");
+        _name = Console.ReadLine();
+        Console.Write("What is a short description of it? ");
+        _description = Console.ReadLine();
+        Console.Write("What is the amount of points associated with this goal? ");
+        _points = int.Parse(Console.ReadLine());
+        _done = false;
+    }
 
+    private string TransformType(string input)
+    {
+        if (input == "1")
+        {
+            return "Simple";
+        }
+        else if (input == "2")
+        {
+            return "Eternal";
+        }
+        else if (input == "3")
+        {
+            return "Gradual";
+        }
+        else
+        {
+            return "Unknown";
+        }
+    }
     public string Serialize()
     {
         return $"{_type}~{_name}~{_description}~{_points}~{_done}";
