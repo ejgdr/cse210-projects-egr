@@ -1,7 +1,11 @@
+using System.ComponentModel.Design;
+
 public class Menu
 {
     // Display the menus on the screen, the General and for New goals
     private string _option;
+    private string _selection;
+    private GoalManager _manager = new GoalManager();
     public Menu(){}
     public void DisplayGeneralMenu()
     {
@@ -13,11 +17,12 @@ public class Menu
     {
         Console.WriteLine("The type of Goals are:");
         Console.WriteLine("1. Simple Goal\n2. Eternal Goal\n3. Checklist Goal");
-        Console.Write("Which type of goal would you like to create? ");
+        Console.Write("Which type of goal wouold you like to create? ");
     }
     
     public void SelectFromGeneralMenu()
     {
+        Console.Clear();
         while (_option != "6")
         {
             // Additional feature to avoid the program to crash
@@ -28,10 +33,12 @@ public class Menu
                 if (_option == "1")
                 {
                     DisplayNewGoalMenu();
+                    _selection = Console.ReadLine();
+                    _manager.CreateGoal(_selection);
                 }
                 else if (_option == "2")
                 {
-                    
+                    _manager.DisplayGoals();
                 }
                 else if (_option == "3")
                 {

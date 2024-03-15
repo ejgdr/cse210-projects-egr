@@ -6,20 +6,8 @@ public abstract class Goal
     protected string _description;
     protected int _points;
     protected bool _done;
-    public Goal()
-    {
-        Console.Write("Which type of goal wouold you like to create? ");
-        _type = TransformType(Console.ReadLine());
-        Console.Write("What is the name of your goal? ");
-        _name = Console.ReadLine();
-        Console.Write("What is a short description of it? ");
-        _description = Console.ReadLine();
-        Console.Write("What is the amount of points associated with this goal? ");
-        _points = int.Parse(Console.ReadLine());
-        _done = false;
-    }
 
-    private string TransformType(string input)
+    public string TransformType(string input)
     {
         if (input == "1")
         {
@@ -58,11 +46,18 @@ public abstract class Goal
             _done = bool.Parse(splitting[4]);
         }
     }
-
-    public abstract void DisplayGoal();
-    public abstract void ScoreCount();
+    public string CreateGoal(string selection)
+    {
+        _type = TransformType(selection);
+        return _type;
+    }
+    public virtual string DisplayGoal()
+    {
+        return $"[ ] {_name} ({_description})";
+    }
+    public void ScoreCount(){}
+    public void MarkOffGoal(){}
     public abstract void RecordEvent();
-    public abstract void MarkOffGoal();
 
 
 }
