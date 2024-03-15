@@ -24,6 +24,27 @@ public class GradualGoal : Goal
     {
         return $"[ ] {_name} ({_description}) -- Currently completed: {_progress}/{_goalLength}";
     }
+    public override string Serialize()
+    {
+        return $"{_type}~{_name}~{_description}~{_points}~{_extraBonus}~{_progress}~{_goalLength}";
+    }
+    public override void Deserialize(string content)
+    {
+        string[] splitting = content.Split("~");
+        if (splitting.Length < 6)
+        {
+            Console.WriteLine("Missing content");
+        }
+        else
+        {
+            _type = splitting[0];
+            _name = splitting[1];
+            _description = splitting[2];
+            _points = int.Parse(splitting[3]);
+            _extraBonus = int.Parse(splitting[4]);
+            _goalLength = int.Parse(splitting[5]);
+        }
+    }
     public override void RecordEvent(){}
 
 }

@@ -3,6 +3,7 @@ public class GoalManager
     // Help to manage my score, display my goals, save them and load them
     private FileManager _fileManage = new FileManager();
     protected int _score;
+    protected int _numberGoal = 0;
     protected SimpleGoal _simple;
     protected EternalGoal _eternal;
     protected GradualGoal _gradual;
@@ -32,14 +33,14 @@ public class GoalManager
         }
         else
         {
-            Console.WriteLine("Wrong input, stick to the menu");
+            Console.WriteLine("Wrong input, stick to the menu to pick a type of Goal");
         }
     }
     public void DisplayGoals()
     {
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine(goal.DisplayGoal());
+            Console.WriteLine($"{_numberGoal += 1}. {goal.DisplayGoal()}");
         }
     }
     public void SaveGoals(){}

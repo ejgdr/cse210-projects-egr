@@ -26,11 +26,11 @@ public abstract class Goal
             return "Unknown";
         }
     }
-    public string Serialize()
+    public virtual string Serialize()
     {
         return $"{_type}~{_name}~{_description}~{_points}~{_done}";
     }
-    public void Deserialize(string content)
+    public virtual void Deserialize(string content)
     {
         string[] splitting = content.Split("~");
         if (splitting.Length < 4)

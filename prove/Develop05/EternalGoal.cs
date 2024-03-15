@@ -12,6 +12,25 @@ public class EternalGoal : Goal
         _points = int.Parse(Console.ReadLine());
         _done = false;
     }
+    public override string Serialize()
+    {
+        return $"{_type}~{_name}~{_description}~{_points}";
+    }
+    public override void Deserialize(string content)
+    {
+        string[] splitting = content.Split("~");
+        if (splitting.Length < 3)
+        {
+            Console.WriteLine("Missing content");
+        }
+        else
+        {
+            _type = splitting[0];
+            _name = splitting[1];
+            _description = splitting[2];
+            _points = int.Parse(splitting[3]);
+        }
+    }
     public override void RecordEvent(){}
 
 }
