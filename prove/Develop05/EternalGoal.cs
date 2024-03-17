@@ -43,10 +43,6 @@ public class EternalGoal : Goal
             _score += _points;
             Console.WriteLine($"You now have {_score} points.\n");
         }
-        else
-        {
-            _score = 0;
-        }
     }
 
 }
