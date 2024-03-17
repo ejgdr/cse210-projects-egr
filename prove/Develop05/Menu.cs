@@ -19,7 +19,11 @@ public class Menu
         Console.WriteLine("1. Simple Goal\n2. Eternal Goal\n3. Checklist Goal");
         Console.Write("Which type of goal wouold you like to create? ");
     }
-    
+    public void DisplayScore()
+    {
+        int cumScore = _manager.CurrentScore();
+        Console.WriteLine($"You have {cumScore} points\n");
+    }
     public void SelectFromGeneralMenu()
     {
         Console.Clear();
@@ -28,6 +32,7 @@ public class Menu
             // Additional feature to avoid the program to crash
             try
             {
+                DisplayScore();
                 DisplayGeneralMenu();
                 _option = Console.ReadLine();
                 if (_option == "1")
@@ -42,15 +47,17 @@ public class Menu
                 }
                 else if (_option == "3")
                 {
-                    
+                    _manager.SaveGoals();
                 }
                 else if (_option == "4")
                 {
-                    
+                    _manager.LoadGoals();   
                 }
                 else if (_option == "5")
                 {
-                    
+                    Console.WriteLine("The goals are:");
+                    _manager.DisplayGoals();
+                    _manager.RecordGoals();
                 }
                 // Additional feature, to avoid crashing the program for wrong input
                 else if (_option == "6")

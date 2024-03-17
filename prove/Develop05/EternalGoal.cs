@@ -1,9 +1,9 @@
 public class EternalGoal : Goal
 {
     // Goals that will never be marked as checked, they don't have an end.
-    public EternalGoal(string type) : base ()
+    public EternalGoal() : base ()
     {
-        _type = type;
+        _type = "Eternal";
         Console.Write("What is the name of your goal? ");
         _name = Console.ReadLine();
         Console.Write("What is a short description of it? ");
@@ -11,6 +11,10 @@ public class EternalGoal : Goal
         Console.Write("What is the amount of points associated with this goal? ");
         _points = int.Parse(Console.ReadLine());
         _done = false;
+    }
+    public EternalGoal(string line) : base()
+    {
+        Deserialize(line);
     }
     public override string Serialize()
     {
@@ -31,6 +35,18 @@ public class EternalGoal : Goal
             _points = int.Parse(splitting[3]);
         }
     }
-    public override void RecordEvent(){}
+    public override void RecordEvent()
+    {
+        if (_type == "Eternal")
+        {
+            Console.WriteLine($"Congratulations! You have earned {_points} points!");
+            _score += _points;
+            Console.WriteLine($"You now have {_score} points.\n");
+        }
+        else
+        {
+            _score = 0;
+        }
+    }
 
 }

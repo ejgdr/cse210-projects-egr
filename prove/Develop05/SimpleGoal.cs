@@ -1,9 +1,9 @@
 public class SimpleGoal : Goal
 {
     // Goals that will be marked as checked once they are completed
-    public SimpleGoal(string type) : base ()
+    public SimpleGoal() : base ()
     {
-        _type = type;
+        _type = "Simple";
         Console.Write("What is the name of your goal? ");
         _name = Console.ReadLine();
         Console.Write("What is a short description of it? ");
@@ -12,6 +12,25 @@ public class SimpleGoal : Goal
         _points = int.Parse(Console.ReadLine());
         _done = false;
     }
-    public override void RecordEvent(){}
+
+    public SimpleGoal(string line) : base()
+    {
+        Deserialize(line);
+    }
+    
+    public override void RecordEvent()
+    {
+        if (_type == "Simple")
+        {
+            Console.WriteLine($"Congratulations! You have earned {_points} points!");
+            _done = true;
+            _score += _points;
+            Console.WriteLine($"You now have {_score} points.\n");
+        }
+        else
+        {
+            _score = 0;
+        }
+    }
 
 }

@@ -5,27 +5,9 @@ public abstract class Goal
     protected string _name;
     protected string _description;
     protected int _points;
+    protected int _score;
     protected bool _done;
 
-    public string TransformType(string input)
-    {
-        if (input == "1")
-        {
-            return "Simple";
-        }
-        else if (input == "2")
-        {
-            return "Eternal";
-        }
-        else if (input == "3")
-        {
-            return "Gradual";
-        }
-        else
-        {
-            return "Unknown";
-        }
-    }
     public virtual string Serialize()
     {
         return $"{_type}~{_name}~{_description}~{_points}~{_done}";
@@ -46,17 +28,15 @@ public abstract class Goal
             _done = bool.Parse(splitting[4]);
         }
     }
-    public string CreateGoal(string selection)
-    {
-        _type = TransformType(selection);
-        return _type;
-    }
+
     public virtual string DisplayGoal()
     {
-        return $"[ ] {_name} ({_description})";
+        return $"[{(_done ? 'X':' ')}] {_name} ({_description})";
     }
-    public void ScoreCount(){}
-    public void MarkOffGoal(){}
+    public virtual int ScoreCount()
+    {
+        return _score;
+    }
     public abstract void RecordEvent();
 
 

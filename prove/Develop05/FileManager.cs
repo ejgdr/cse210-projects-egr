@@ -6,41 +6,35 @@ public class FileManager
     {
     }
 
-    public void CreateFile(string fileName, List<string> list)
+    public void CreateFile(string filename, List<Goal> list)
     {    
         // To create content for the first time
-        using (StreamWriter outputFile = new StreamWriter(fileName)) 
+        using (StreamWriter outputFile = new StreamWriter(filename)) 
         {
-            foreach (string item in list)
+            foreach (Goal item in list)
             {
-                outputFile.WriteLine(item);
+                outputFile.WriteLine(item.Serialize());
             }
         }
     }
 
-    public void AddToFile(string fileName, List<string> list)
+    public void AddToFile(string filename, List<Goal> list)
     {
         // Allow me to record on file
-        using (StreamWriter outputFile = new StreamWriter(fileName, true)) 
+        using (StreamWriter outputFile = new StreamWriter(filename, false)) 
         {
-            foreach (string item in list)
+            foreach (Goal item in list)
             {
-                outputFile.WriteLine(item);
+                outputFile.WriteLine(item.Serialize());
             }
         }
     }
 
-    public void ReadFile(string fileName, List<string> list)
+    public string[] ReadFile(string filename)
     {
         // Help me reading the files
-        string[] lines = File.ReadAllLines(fileName);
-        
-        list.Clear(); 
-
-        foreach (string line in lines)
-        {
-            list.Add(line);
-        }
-        
+        string[] lines = File.ReadAllLines(filename);
+    
+        return lines;
     }
 }

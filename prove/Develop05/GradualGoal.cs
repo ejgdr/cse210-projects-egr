@@ -4,9 +4,9 @@ public class GradualGoal : Goal
     private int _goalLength;
     private int _progress;
     private int _extraBonus;
-    public GradualGoal(string type) : base ()
+    public GradualGoal() : base ()
     {
-        _type = type;
+        _type = "Gradual";
         Console.Write("What is the name of your goal? ");
         _name = Console.ReadLine();
         Console.Write("What is a short description of it? ");
@@ -19,6 +19,10 @@ public class GradualGoal : Goal
         _extraBonus = int.Parse(Console.ReadLine());
         _progress = 0;
         _done = false;
+    }
+    public GradualGoal(string line) : base()
+    {
+        Deserialize(line);
     }
     public override string DisplayGoal()
     {
@@ -45,6 +49,29 @@ public class GradualGoal : Goal
             _goalLength = int.Parse(splitting[5]);
         }
     }
-    public override void RecordEvent(){}
+    public override void RecordEvent()
+    {
+        if (_type == "Gradual")
+        {
+            while (_progress != _goalLength)
+            {
+                _score += _points;
+                _progress += 1;
+            }
+            if (_progress == _goalLength)
+            {
+                _score += _points;
+                _score += _extraBonus;
+                _done = true;
+            }
+            Console.WriteLine($"Congratulations! You have earned {_points} points!");
+            Console.WriteLine($"You now have {_score} points.\n");
+        }
+        else
+        {
+            _score = 0;
+        }
+        
+    }
 
 }
