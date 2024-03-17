@@ -25,7 +25,6 @@ public class SimpleGoal : Goal
             Console.WriteLine($"Congratulations! You have earned {_points} points!");
             _done = true;
             _score += _points;
-            Console.WriteLine($"You now have {_score} points.\n");
         }
     }
 

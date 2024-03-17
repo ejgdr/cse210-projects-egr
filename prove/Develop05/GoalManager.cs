@@ -70,19 +70,19 @@ public class GoalManager
                 {
                     _simple = new SimpleGoal(line);
                     _goals.Add(_simple);
-                    score += _simple.ScoreCount();
+                    // score += _simple.ScoreCount();
                 }
                 else if (typeGoal == "Eternal")
                 {
                     _eternal = new EternalGoal(line);
                     _goals.Add(_eternal);
-                    score += _eternal.ScoreCount();
+                    // score += _eternal.ScoreCount();
                 }
                 else if (typeGoal == "Gradual")
                 {
                     _gradual = new GradualGoal(line);
                     _goals.Add(_gradual);
-                    score += _gradual.ScoreCount();
+                    // score += _gradual.ScoreCount();
                 }
                 else
                 {
@@ -101,6 +101,8 @@ public class GoalManager
         var selection = Console.ReadLine();
         int index = int.Parse(selection);
         _goals[index - 1].RecordEvent();
+        score += _goals[index - 1].ScoreCount();
+        Console.WriteLine($"You now have {score} points.\n");
     }
 
     public int CurrentScore()

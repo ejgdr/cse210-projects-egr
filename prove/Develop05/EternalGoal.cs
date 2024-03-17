@@ -41,7 +41,6 @@ public class EternalGoal : Goal
         {
             Console.WriteLine($"Congratulations! You have earned {_points} points!");
             _score += _points;
-            Console.WriteLine($"You now have {_score} points.\n");
         }
     }
 

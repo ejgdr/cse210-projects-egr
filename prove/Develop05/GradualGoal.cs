@@ -63,11 +63,9 @@ public class GradualGoal : Goal
                 _score += _points;
                 _score += _extraBonus;
                 _done = true;
-            }
-            Console.WriteLine($"Congratulations! You have earned {_points} points!");
-            Console.WriteLine($"You now have {_score} points.\n");
+            }    
         }
-        
+        Console.WriteLine($"Congratulations! You have earned {_points} points!");
     }
 
 }
