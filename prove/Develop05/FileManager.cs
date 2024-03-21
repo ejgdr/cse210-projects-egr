@@ -6,11 +6,12 @@ public class FileManager
     {
     }
 
-    public void CreateFile(string filename, List<Goal> list)
+    public void CreateFile(string filename, List<Goal> list, int score)
     {    
         // To create content for the first time
         using (StreamWriter outputFile = new StreamWriter(filename)) 
         {
+            outputFile.WriteLine(score);
             foreach (Goal item in list)
             {
                 outputFile.WriteLine(item.Serialize());
@@ -18,11 +19,12 @@ public class FileManager
         }
     }
 
-    public void AddToFile(string filename, List<Goal> list)
+    public void AddToFile(string filename, List<Goal> list, int score)
     {
         // Allow me to record on file
         using (StreamWriter outputFile = new StreamWriter(filename, false)) 
         {
+            outputFile.WriteLine(score);
             foreach (Goal item in list)
             {
                 outputFile.WriteLine(item.Serialize());

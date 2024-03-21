@@ -1,4 +1,0 @@
-Simple~Temple~Monthly attendance~30~False
-Eternal~Scriptures~Daily reading of them~20
-Gradual~Ministering~Monthly visits to the sisters~30~150~0~0
-Simple~Talk~Give a talk in sacrament meeting~50~False

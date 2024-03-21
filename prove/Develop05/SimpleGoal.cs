@@ -20,12 +20,9 @@ public class SimpleGoal : Goal
     
     public override void RecordEvent()
     {
-        if (_type == "Simple")
-        {
-            Console.WriteLine($"Congratulations! You have earned {_points} points!");
-            _done = true;
-            _score += _points;
-        }
+        Console.WriteLine($"Congratulations! You have earned {_points} points!");
+        _done = true;
+        _score += _points;
     }
 
 }

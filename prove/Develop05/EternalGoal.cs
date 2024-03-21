@@ -37,11 +37,8 @@ public class EternalGoal : Goal
     }
     public override void RecordEvent()
     {
-        if (_type == "Eternal")
-        {
-            Console.WriteLine($"Congratulations! You have earned {_points} points!");
-            _score += _points;
-        }
+        Console.WriteLine($"Congratulations! You have earned {_points} points!");
+        _score += _points;
     }
 
 }

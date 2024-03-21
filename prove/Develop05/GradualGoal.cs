@@ -26,7 +26,7 @@ public class GradualGoal : Goal
     }
     public override string DisplayGoal()
     {
-        return $"[ ] {_name} ({_description}) -- Currently completed: {_progress}/{_goalLength}";
+        return $"[{(_done ? 'X':' ')}] {_name} ({_description}) -- Currently completed: {_progress}/{_goalLength}";
     }
     public override string Serialize()
     {
@@ -46,26 +46,27 @@ public class GradualGoal : Goal
             _description = splitting[2];
             _points = int.Parse(splitting[3]);
             _extraBonus = int.Parse(splitting[4]);
-            _goalLength = int.Parse(splitting[5]);
+            _progress = int.Parse(splitting[5]);
+            _goalLength = int.Parse(splitting[6]);
         }
     }
     public override void RecordEvent()
     {
-        if (_type == "Gradual")
+        if (_progress < _goalLength)
         {
-            while (_progress != _goalLength)
-            {
-                _score += _points;
-                _progress += 1;
-            }
+            _score += _points;
+            _progress += 1;
+            Console.WriteLine($"Congratulations! You have earned {_points} points!");
             if (_progress == _goalLength)
             {
-                _score += _points;
-                _score += _extraBonus;
                 _done = true;
-            }    
+                _score += _extraBonus;
+                Console.WriteLine($"So great! You also earned {_extraBonus} points for your Bonus!");
+            } 
         }
-        Console.WriteLine($"Congratulations! You have earned {_points} points!");
+        
+                    
+        
     }
 
 }

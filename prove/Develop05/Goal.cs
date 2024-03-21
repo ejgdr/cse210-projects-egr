@@ -38,6 +38,6 @@ public abstract class Goal
         return _score;
     }
     public abstract void RecordEvent();
-
+    
 
 }

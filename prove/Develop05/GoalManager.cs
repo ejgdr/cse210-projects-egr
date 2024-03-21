@@ -1,3 +1,5 @@
+using System.Formats.Asn1;
+
 public class GoalManager
 {
     // Help to manage my score, display my goals, save them and load them
@@ -15,19 +17,16 @@ public class GoalManager
         {
             _simple = new SimpleGoal();
             _goals.Add(_simple);
-            score += _simple.ScoreCount();
         }
         else if (selection == "2")
         {
             _eternal = new EternalGoal();
             _goals.Add(_eternal);
-            score += _eternal.ScoreCount();
         }
         else if (selection == "3")
         {
             _gradual = new GradualGoal();
             _goals.Add(_gradual);
-            score += _gradual.ScoreCount();
         }
         else
         {
@@ -48,11 +47,11 @@ public class GoalManager
         var filename = Console.ReadLine();
         if (!File.Exists(filename))
         {
-            _fileManage.CreateFile(filename, _goals);
+            _fileManage.CreateFile(filename, _goals, score);
         }        
         else
         {
-            _fileManage.AddToFile(filename, _goals);
+            _fileManage.AddToFile(filename, _goals, score);
         }
     }
     public void LoadGoals()
@@ -62,27 +61,29 @@ public class GoalManager
         if (File.Exists(filename))
         {
             string[] fileContent = _fileManage.ReadFile(filename);
+            
+            int temp = int.Parse(fileContent[0]);
+            score = temp;
+            CurrentScore();
             foreach (string line in fileContent)
             {
                 var toUse = line.Split("~");
                 var typeGoal = toUse[0];
+                
                 if (typeGoal == "Simple")
                 {
                     _simple = new SimpleGoal(line);
                     _goals.Add(_simple);
-                    // score += _simple.ScoreCount();
                 }
                 else if (typeGoal == "Eternal")
                 {
                     _eternal = new EternalGoal(line);
                     _goals.Add(_eternal);
-                    // score += _eternal.ScoreCount();
                 }
                 else if (typeGoal == "Gradual")
                 {
                     _gradual = new GradualGoal(line);
                     _goals.Add(_gradual);
-                    // score += _gradual.ScoreCount();
                 }
                 else
                 {
